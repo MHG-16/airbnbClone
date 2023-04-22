@@ -4,12 +4,14 @@ import React, { useCallback, useState } from 'react'
 import { AiOutlineMenu } from "react-icons/ai";
 import { RxAvatar } from "react-icons/rx"
 import MenuItem from './MenuItem';
+import useRegisterModal from '@/app/hooks/useRegister';
 
 const UserMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = useCallback(() => {
     setIsOpen((value) => !value);
-  }, [])
+  }, []);
+  const registerModal = useRegisterModal();
   return (
     <div className='relative'>
         <div className='flex flex-row items-center gap-3'>
@@ -36,7 +38,7 @@ const UserMenu = () => {
                 <div className="flex flex-col cursor-pointer">
                     <>
                         <MenuItem onClick={() => {}} label="Login"/>
-                        <MenuItem onClick={() => {}} label="Sign up"/>
+                        <MenuItem onClick={registerModal.onOpen} label="Sign up"/>
                     </>
                 </div>
             </div>

@@ -70,8 +70,9 @@ const Modal: React.FC<ModalProps> = ({
             <div className="relative w-full md:w-2/3 lg:w-1/2 xl:w-2/5
             my-6 mx-auto h-full md:h-auto">
                 <ContentModal 
+                footer={footer}
                 showModal={showModal} handleClose={handleClose} 
-                title={title} handleSubmit={handleSubmit}
+                title={title} handleSubmit={handleSubmit} body={body}
                 disabled={disabled} actionLabel={actionLabel}
                 />
             </div>
@@ -88,6 +89,7 @@ interface ContentModalProps {
     actionLabel: string;
     disabled?: boolean;
     handleSubmit: () => void;
+    footer?: React.ReactElement;
 }
 const ContentModal: React.FC<ContentModalProps> = ({
     showModal,
@@ -96,7 +98,8 @@ const ContentModal: React.FC<ContentModalProps> = ({
     body,
     actionLabel,
     handleSubmit,
-    disabled
+    disabled,
+    footer
 }) => {
     return(
         <div className={`translate duration-300 h-full
@@ -110,7 +113,8 @@ const ContentModal: React.FC<ContentModalProps> = ({
             '>
                 <HeaderModal handleClose={handleClose} title={title}/>
                 <BodyModal body={body}/>
-                <FooterModal actionLabel={actionLabel} disabled={disabled} onClick={handleSubmit} />
+                <FooterModal actionLabel={actionLabel} disabled={disabled} 
+                onClick={handleSubmit} footer={footer}/>
             </div>
         </div>
     )
@@ -148,6 +152,7 @@ const BodyModal: React.FC<BodyModalProps> = ({body}) => {
 }
 
 interface FooterModalProps{
+    footer?: React.ReactElement;
     actionLabel: string;
     disabled?: boolean;
     onClick: () => void;
@@ -161,6 +166,7 @@ const FooterModal: React.FC<FooterModalProps> = ({
     onClick,
     secondaryActionLabel,
     handleSecondaryAction,
+    footer
 }) => {
     return (
         <div className='flex flex-col gap-2 p-6'>
@@ -171,6 +177,7 @@ const FooterModal: React.FC<FooterModalProps> = ({
                 )}
                 <Button label={actionLabel}  onClick={onClick} disabled={disabled}/>
             </div>
+            {footer}
         </div>
     )
 }
