@@ -3,6 +3,7 @@ import { Nunito } from 'next/font/google';
 
 import NavBar from './components/navbar/NavBar';
 import ClientOnly from './components/share/ClientOnly';
+import Modal from './components/modal/Modal';
 
 
 export const metadata = {
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <ClientOnly>
+          <Modal isOpen title="Login" actionLabel='Continue'/>
           <NavBar />
         </ClientOnly>
         {children}
