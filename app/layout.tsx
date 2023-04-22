@@ -1,5 +1,8 @@
 import './globals.css'
-import { Inter, Nunito } from 'next/font/google'
+import { Nunito } from 'next/font/google';
+
+import NavBar from './components/navbar/NavBar';
+import ClientOnly from './components/share/ClientOnly';
 
 
 export const metadata = {
@@ -19,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <Navbar />
+        <ClientOnly>
+          <NavBar />
+        </ClientOnly>
         {children}
       </body>
     </html>
