@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useCallback } from 'react';
 import axios from 'axios';
 import { signIn } from 'next-auth/react';
 import { AiOutlineGithub } from 'react-icons/ai';
@@ -23,6 +23,11 @@ const LoginModal = () => {
   const router = useRouter();
   const registerModal = useRegisterModal();
   const [isLoading, setLoading] = useState(false);
+
+  const toogle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal])
 
   const { register, handleSubmit, formState: {errors}} = useForm<FieldValues>({
     defaultValues: {
@@ -76,8 +81,10 @@ const LoginModal = () => {
       />
       <div className='text-neutral-500 text-center mt-4 font-light'>
         <div className="flex flex-row items-center gap-3 justify-center">
-          <div> Already have an account ?</div>
-          <div className="text-neutral-800 cursor-pointer hover:underline"> Log in </div>
+          <div> First time using Airbnb?</div>
+          <div className="text-neutral-800 cursor-pointer hover:underline"
+            onClick={toogle}
+          > Create an account </div>
         </div>
       </div>
     </div>
