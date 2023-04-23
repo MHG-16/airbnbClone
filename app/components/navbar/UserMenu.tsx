@@ -3,15 +3,15 @@
 import React, { useCallback, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 import { RxAvatar } from "react-icons/rx";
-import { User } from "@prisma/client";
 
 import MenuItem from "./MenuItem";
 import useRegisterModal from "@/app/hooks/useRegister";
 import useLoginModal from "@/app/hooks/useLogin";
 import { signOut } from "next-auth/react";
+import { SafeUser } from "@/app/types";
 
 interface UserMenuProps {
-  currentUser?: User | null;
+  currentUser?: SafeUser | null;
 }
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
   const [isOpen, setIsOpen] = useState(false);
