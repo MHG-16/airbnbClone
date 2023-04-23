@@ -9,6 +9,7 @@ import useRegisterModal from "@/app/hooks/useRegister";
 import useLoginModal from "@/app/hooks/useLogin";
 import { signOut } from "next-auth/react";
 import { SafeUser } from "@/app/types";
+import Avatar from "./Avatar";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -40,10 +41,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
         >
           <AiOutlineMenu />
           <div className="hidden md:block">
-            <RxAvatar
-              className="bg-neutral-500 rounded-full text-neutral-100"
-              size={30}
-            />
+            <Avatar src={currentUser?.image}/>
           </div>
         </div>
       </div>
