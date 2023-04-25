@@ -74,6 +74,7 @@ const Modal: React.FC<ModalProps> = ({
                 showModal={showModal} handleClose={handleClose} 
                 title={title} handleSubmit={handleSubmit} body={body}
                 disabled={disabled} actionLabel={actionLabel}
+                secondaryAction={handleSecondaryAction} secondaryLabel={secondaryLabel}
                 />
             </div>
         </div>
@@ -90,6 +91,8 @@ interface ContentModalProps {
     disabled?: boolean;
     handleSubmit: () => void;
     footer?: React.ReactElement;
+    secondaryAction?: () => void;
+    secondaryLabel?: string; 
 }
 const ContentModal: React.FC<ContentModalProps> = ({
     showModal,
@@ -99,7 +102,9 @@ const ContentModal: React.FC<ContentModalProps> = ({
     actionLabel,
     handleSubmit,
     disabled,
-    footer
+    footer,
+    secondaryAction,
+    secondaryLabel
 }) => {
     return(
         <div className={`translate duration-300 h-full
@@ -114,7 +119,7 @@ const ContentModal: React.FC<ContentModalProps> = ({
                 <HeaderModal handleClose={handleClose} title={title}/>
                 <BodyModal body={body}/>
                 <FooterModal actionLabel={actionLabel} disabled={disabled} 
-                onClick={handleSubmit} footer={footer}/>
+                onClick={handleSubmit} footer={footer} secondaryActionLabel={secondaryLabel} handleSecondaryAction={secondaryAction} />
             </div>
         </div>
     )
