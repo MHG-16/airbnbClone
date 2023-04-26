@@ -37,7 +37,7 @@ const ImageUpload : React.FC<ImageUploadProps> = ({
                     className='relative cursor-pointer
                     hover:opacity-70 transition
                     border-dashed border-2
-                    p-2 border-neutral-300
+                    p-32 border-neutral-300
                     flex flex-col justify-center items-center
                     gap-4 text-neutral-600
                     '
