@@ -12,6 +12,7 @@ import CountrySelect from '../Input/CountrySelect';
 import Map from '../share/Map';
 import dynamic from 'next/dynamic';
 import Counter from '../Input/Counter';
+import ImageUpload from '../Input/ImageUpload';
 
 
 enum STEPS {
@@ -55,7 +56,8 @@ const RentModal = () => {
   const location = watch('location');
   const guestCount = watch('guestCount');
   const roomCount = watch('roomCount');
-  const bathroomsCount = watch('bathroomsCount')
+  const bathroomsCount = watch('bathroomsCount');
+  const imageSrc = watch('imgSrc');
 
   const Map = useMemo(() => dynamic(() => import ('../share/Map'), {
     ssr: false
@@ -153,6 +155,21 @@ const RentModal = () => {
         />
       </div>
     );
+  }
+
+  if (step === STEPS.IMAGES){
+    bodyContent = (
+      <div className='flex flex-col gap-8'>
+        <Heading
+          title='Add  a photo of your place?'
+          subtitle='Show guests what your place looks like!'
+        />
+        <ImageUpload 
+          onChange={(value) => setCustomValue('imgSrc', value)}
+          value={imageSrc}
+        />
+      </div>
+    )
   }
   return (
     <Modal 
