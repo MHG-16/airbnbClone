@@ -1,8 +1,11 @@
 import React from 'react'
+
 import getCurrentUser from '../actions/getCurrentUser';
 import ClientOnly from '../components/share/ClientOnly';
 import EmptyState from '../components/share/EmptyState';
 import getReservations from '../actions/getReservations';
+import TripsClient from './TripsClient';
+
 
 const TripsPage = async () => {
   const currentUser = await getCurrentUser();
@@ -28,7 +31,7 @@ const TripsPage = async () => {
   return (
     <ClientOnly>
         <TripsClient 
-            reservation={reservations}
+            reservations={reservations}
             currentUser={currentUser}
         />
     </ClientOnly>
