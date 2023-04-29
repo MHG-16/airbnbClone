@@ -1,6 +1,6 @@
 import getCurrentUser from "./actions/getCurrentUser";
 import getListings from "./actions/getListings";
-import ListingCard from "./components/ListingCard";
+import ListingCard from "./components/listings/ListingCard";
 import ClientOnly from "./components/share/ClientOnly";
 import Container from "./components/share/Container";
 import EmptyState from "./components/share/EmptyState";

@@ -6,10 +6,10 @@ import { format } from 'date-fns';
 import  Image  from 'next/image';
 
 import { Reservation, Listing } from '@prisma/client';
-import { SafeUser } from '../types';
-import useCountries from '../hooks/useCountires';
-import HeartButton from './HeartButton';
-import Button from './share/Button';
+import { SafeUser } from '../../types';
+import useCountries from '../../hooks/useCountires';
+import HeartButton from '../HeartButton';
+import Button from '../share/Button';
 
 interface ListingCardProps {
   data: Listing;
